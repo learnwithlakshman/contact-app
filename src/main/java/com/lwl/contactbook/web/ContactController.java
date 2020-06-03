@@ -24,7 +24,7 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 
-	@PostMapping("add")
+	@PostMapping("new")
 	public Contact addContact(@RequestBody ContactDTO contactDTO) {
 		ModelMapper mapper = new ModelMapper();
 		Contact contact = mapper.map(contactDTO, Contact.class);
