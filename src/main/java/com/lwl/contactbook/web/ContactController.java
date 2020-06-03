@@ -2,6 +2,7 @@ package com.lwl.contactbook.web;
 
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lwl.contactbook.domain.Contact;
+import com.lwl.contactbook.dto.ContactDTO;
 import com.lwl.contactbook.service.ContactService;
 
 @RestController
@@ -23,7 +25,9 @@ public class ContactController {
 	private ContactService contactService;
 
 	@PostMapping("add")
-	public Contact addContact(@RequestBody Contact contact) {
+	public Contact addContact(@RequestBody ContactDTO contactDTO) {
+		ModelMapper mapper = new ModelMapper();
+		Contact contact = mapper.map(contactDTO, Contact.class);
 		return contactService.addContact(contact);
 	}
 

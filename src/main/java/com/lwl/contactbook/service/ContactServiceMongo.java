@@ -48,6 +48,7 @@ public class ContactServiceMongo implements ContactService {
 	@Override
 	public Contact updateContact(Contact contact) {
 		Assert.notNull(contact, "This can't be null");
+		Assert.notNull(contact.getCid(), "CID can't be null for updating");
 		contact = dao.updateContact(contact);
 		if (contact != null) {
 			log.info("update successfull for cid {} ", contact.getCid());
