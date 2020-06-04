@@ -33,12 +33,17 @@ public class MongoDaoImpl implements Dao {
 
 	@Override
 	public List<Contact> getContacts() {
-		return repo.findAll();
+		return repo.findByOrderByNameAsc();
 	}
 
 	@Override
-	public List<Contact> search(String name) {
-		return repo.findAllByName(name);
+	public List<Contact> search(String search) {
+		String numberRegex = "\\d+";
+		search = search.trim();
+		if (search.matches(numberRegex)) {
+			return repo.findByMobileStartingWith(search);
+		}
+		return repo.findAllByName(search);
 	}
 
 	@Override

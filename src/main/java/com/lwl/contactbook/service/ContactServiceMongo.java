@@ -41,7 +41,7 @@ public class ContactServiceMongo implements ContactService {
 	public List<Contact> search(String name) {
 		Assert.notNull(name, "This can't be null");
 		List<Contact> list = dao.search(name);
-		log.info("Total Search Contacts found are : {} for name {} ", list != null ? list.size() : 0, name);
+		log.info("Total Search Contacts found are : {} for searchstring {} ", list != null ? list.size() : 0, name);
 		return list;
 	}
 

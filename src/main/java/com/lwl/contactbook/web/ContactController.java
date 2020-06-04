@@ -17,6 +17,8 @@ import com.lwl.contactbook.domain.Contact;
 import com.lwl.contactbook.dto.ContactDTO;
 import com.lwl.contactbook.service.ContactService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("api/capp/")
 public class ContactController {
@@ -36,9 +38,10 @@ public class ContactController {
 		return contactService.getContacts();
 	}
 
-	@GetMapping("search/{name}")
-	public List<Contact> search(@PathVariable String name) {
-		return contactService.search(name);
+	@GetMapping("search/{searchstring}")
+	@ApiOperation(value = "Finds contacts with given name or mobile number", notes = "Provide name or mobile number", response = Contact.class)
+	public List<Contact> search(@PathVariable String searchstring) {
+		return contactService.search(searchstring);
 	}
 
 	@PutMapping("update")

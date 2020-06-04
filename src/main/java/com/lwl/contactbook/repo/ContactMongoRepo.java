@@ -11,5 +11,9 @@ public interface ContactMongoRepo extends MongoRepository<Contact, String> {
 
 	@Query(value = "{'name': {$regex : ?0, $options: 'i'}}")
 	List<Contact> findAllByName(String name);
-	
+
+	List<Contact> findByMobileStartingWith(String number);
+
+	List<Contact> findByOrderByNameAsc();
+
 }
