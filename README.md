@@ -44,6 +44,9 @@ gradlew bootJar
 cd build\libs
 java -jar contactbook-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
 ```
+
+### After successful completion of above steps you can access Swagger-UI from here http://localhost:8080/swagger-ui.html
+
 ### Port issues
 
 By default this application will run in port 8080. <br>
@@ -52,3 +55,5 @@ if that port is busy you can change port by providing at --server.port=PORT_NUMB
 ```bash
 java -jar contactbook-0.0.1-SNAPSHOT.jar --spring.profiles.active=dev --server.port=8082
 ```
+
+
